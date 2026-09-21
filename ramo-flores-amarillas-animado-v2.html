@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramo de flores amarillas para Antonella</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: linear-gradient(180deg, #fff8e7 0%, #fdf1d6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+  }
+  .stage {
+    position: relative;
+    width: min(680px, 92vw);
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+    overflow: hidden;
+  }
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+  .bouquet { transform-box: fill-box; transform-origin: bottom center; animation: sway 4s ease-in-out infinite; }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-1.5deg); }
+    50% { transform: rotate(1.5deg); }
+  }
+
+  /* the flower group itself only rotates/sways gently - position (translate) stays on the parent <g>, untouched */
+  .flower { transform-box: fill-box; transform-origin: center; }
+  .flower.f1 { animation: nod 3.2s ease-in-out infinite; }
+  .flower.f2 { animation: nod 3.2s ease-in-out infinite 0.35s; }
+  .flower.f3 { animation: nod 3.2s ease-in-out infinite 0.7s; }
+  .flower.f4 { animation: nod 3.2s ease-in-out infinite 1.05s; }
+  .flower.f5 { animation: nod 3.2s ease-in-out infinite 1.4s; }
+  .flower.f6 { animation: nod 3.2s ease-in-out infinite 1.75s; }
+  .flower.f7 { animation: nod 3.2s ease-in-out infinite 2.1s; }
+  @keyframes nod {
+    0%, 100% { transform: rotate(-4deg) scale(1); }
+    50%      { transform: rotate(4deg) scale(1.04); }
+  }
+
+  /* each petal breathes outward from its own center - safe because it has no conflicting attribute transform */
+  .petal { transform-box: fill-box; transform-origin: center; animation: breathe 2.4s ease-in-out infinite; }
+  @keyframes breathe {
+    0%, 100% { transform: scale(0.92); }
+    50%      { transform: scale(1.08); }
+  }
+
+  /* the flower center also pulses, slightly out of phase */
+  .center-dot { transform-box: fill-box; transform-origin: center; animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.12); }
+  }
+
+  .petal-fall { position: absolute; top: -20px; font-size: 16px; opacity: 0.85; animation-name: fall; animation-timing-function: linear; animation-iteration-count: infinite; }
+  @keyframes fall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.9; }
+    100% { transform: translateY(520px) rotate(360deg); opacity: 0; }
+  }
+
+  .butterfly { position: absolute; font-size: 22px; animation: flutter 7s ease-in-out infinite; }
+  .butterfly.b2 { animation-duration: 9s; animation-delay: 1.5s; }
+  @keyframes flutter {
+    0%   { top: 60px; left: 10%; transform: rotate(0deg); }
+    20%  { top: 100px; left: 70%; transform: rotate(10deg); }
+    40%  { top: 40px; left: 40%; transform: rotate(-8deg); }
+    60%  { top: 130px; left: 85%; transform: rotate(6deg); }
+    80%  { top: 70px; left: 20%; transform: rotate(-4deg); }
+    100% { top: 60px; left: 10%; transform: rotate(0deg); }
+  }
+
+  .sparkle { position: absolute; font-size: 14px; animation: twinkle 2.2s ease-in-out infinite; }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.6); }
+    50% { opacity: 1; transform: scale(1.1); }
+  }
+
+  .label {
+    text-align: center;
+    margin-top: 4px;
+    font-family: 'Brush Script MT', cursive, 'Segoe UI', sans-serif;
+    font-size: 30px;
+    color: #b5772e;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="butterfly" style="color:#e0722f;">🦋</div>
+  <div class="butterfly b2" style="color:#f2955a;">🦋</div>
+
+  <div class="petal-fall" style="left:8%; animation-duration: 6s;">🌼</div>
+  <div class="petal-fall" style="left:25%; animation-duration: 8s; animation-delay: 1s;">🌼</div>
+  <div class="petal-fall" style="left:50%; animation-duration: 7s; animation-delay: 2s;">🌼</div>
+  <div class="petal-fall" style="left:70%; animation-duration: 9s; animation-delay: 0.5s;">🌼</div>
+  <div class="petal-fall" style="left:88%; animation-duration: 6.5s; animation-delay: 1.8s;">🌼</div>
+
+  <div class="sparkle" style="top:30px; left:15%; animation-delay:0s;">✨</div>
+  <div class="sparkle" style="top:60px; left:80%; animation-delay:0.7s;">✨</div>
+  <div class="sparkle" style="top:20px; left:55%; animation-delay:1.3s;">✨</div>
+
+<svg width="100%" viewBox="0 0 680 560" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Ramo de flores amarillas para Antonella</title>
+<desc>Ilustración animada de un ramo de flores amarillas con pétalos que respiran, mariposas y destellos, dedicado a Antonella.</desc>
+<defs>
+<radialGradient id="petalShine" cx="35%" cy="30%" r="70%">
+<stop offset="0%" stop-color="#fff6c9"/>
+<stop offset="100%" stop-color="#f7c948"/>
+</radialGradient>
+</defs>
+
+<g class="bouquet">
+<g stroke="#4f7d3c" stroke-width="6" stroke-linecap="round" fill="none">
+<path d="M340 480 L280 360"/>
+<path d="M340 480 L320 350"/>
+<path d="M340 480 L360 350"/>
+<path d="M340 480 L400 360"/>
+<path d="M340 480 L250 380"/>
+<path d="M340 480 L430 380"/>
+<path d="M340 480 L340 340"/>
+</g>
+<path d="M300 420 Q270 400 260 370 Q300 385 305 415 Z" fill="#5c9345"/>
+<path d="M380 420 Q410 400 420 370 Q380 385 375 415 Z" fill="#5c9345"/>
+
+<path d="M300 455 Q340 500 380 455 L370 435 Q340 460 310 435 Z" fill="#e0722f"/>
+<rect x="305" y="440" width="70" height="18" rx="4" fill="#f2955a"/>
+
+<!-- each flower: outer <g translate> stays fixed, inner <g class="flower"> only rotates/scales -->
+<g transform="translate(280,340)">
+<g class="flower f1">
+<g transform="rotate(0)"><ellipse class="petal" cx="0" cy="-22" rx="12" ry="20" fill="url(#petalShine)"/></g>
+<g transform="rotate(72)"><ellipse class="petal" cx="0" cy="-22" rx="12" ry="20" fill="url(#petalShine)"/></g>
+<g transform="rotate(144)"><ellipse class="petal" cx="0" cy="-22" rx="12" ry="20" fill="url(#petalShine)"/></g>
+<g transform="rotate(216)"><ellipse class="petal" cx="0" cy="-22" rx="12" ry="20" fill="url(#petalShine)"/></g>
+<g transform="rotate(288)"><ellipse class="petal" cx="0" cy="-22" rx="12" ry="20" fill="url(#petalShine)"/></g>
+<circle class="center-dot" r="11" fill="#c9862a"/>
+</g>
+</g>
+
+<g transform="translate(320,320)">
+<g class="flower f2">
+<g transform="rotate(20)"><ellipse class="petal" cx="0" cy="-24" rx="13" ry="22" fill="url(#petalShine)"/></g>
+<g transform="rotate(92)"><ellipse class="petal" cx="0" cy="-24" rx="13" ry="22" fill="url(#petalShine)"/></g>
+<g transform="rotate(164)"><ellipse class="petal" cx="0" cy="-24" rx="13" ry="22" fill="url(#petalShine)"/></g>
+<g transform="rotate(236)"><ellipse class="petal" cx="0" cy="-24" rx="13" ry="22" fill="url(#petalShine)"/></g>
+<g transform="rotate(308)"><ellipse class="petal" cx="0" cy="-24" rx="13" ry="22" fill="url(#petalShine)"/></g>
+<circle class="center-dot" r="12" fill="#c9862a"/>
+</g>
+</g>
+
+<g transform="translate(360,315)">
+<g class="flower f3">
+<g transform="rotate(10)"><ellipse class="petal" cx="0" cy="-24" rx="13" ry="22" fill="url(#petalShine)"/></g>
+<g transform="rotate(82)"><ellipse class="petal" cx="0" cy="-24" rx="13" ry="22" fill="url(#petalShine)"/></g>
+<g transform="rotate(154)"><ellipse class="petal" cx="0" cy="-24" rx="13" ry="22" fill="url(#petalShine)"/></g>
+<g transform="rotate(226)"><ellipse class="petal" cx="0" cy="-24" rx="13" ry="22" fill="url(#petalShine)"/></g>
+<g transform="rotate(298)"><ellipse class="petal" cx="0" cy="-24" rx="13" ry="22" fill="url(#petalShine)"/></g>
+<circle class="center-dot" r="12" fill="#c9862a"/>
+</g>
+</g>
+
+<g transform="translate(400,340)">
+<g class="flower f4">
+<g transform="rotate(0)"><ellipse class="petal" cx="0" cy="-22" rx="12" ry="20" fill="url(#petalShine)"/></g>
+<g transform="rotate(72)"><ellipse class="petal" cx="0" cy="-22" rx="12" ry="20" fill="url(#petalShine)"/></g>
+<g transform="rotate(144)"><ellipse class="petal" cx="0" cy="-22" rx="12" ry="20" fill="url(#petalShine)"/></g>
+<g transform="rotate(216)"><ellipse class="petal" cx="0" cy="-22" rx="12" ry="20" fill="url(#petalShine)"/></g>
+<g transform="rotate(288)"><ellipse class="petal" cx="0" cy="-22" rx="12" ry="20" fill="url(#petalShine)"/></g>
+<circle class="center-dot" r="11" fill="#c9862a"/>
+</g>
+</g>
+
+<g transform="translate(250,360)">
+<g class="flower f5">
+<g transform="rotate(40)"><ellipse class="petal" cx="0" cy="-20" rx="11" ry="18" fill="url(#petalShine)"/></g>
+<g transform="rotate(112)"><ellipse class="petal" cx="0" cy="-20" rx="11" ry="18" fill="url(#petalShine)"/></g>
+<g transform="rotate(184)"><ellipse class="petal" cx="0" cy="-20" rx="11" ry="18" fill="url(#petalShine)"/></g>
+<g transform="rotate(256)"><ellipse class="petal" cx="0" cy="-20" rx="11" ry="18" fill="url(#petalShine)"/></g>
+<g transform="rotate(328)"><ellipse class="petal" cx="0" cy="-20" rx="11" ry="18" fill="url(#petalShine)"/></g>
+<circle class="center-dot" r="10" fill="#c9862a"/>
+</g>
+</g>
+
+<g transform="translate(430,360)">
+<g class="flower f6">
+<g transform="rotate(40)"><ellipse class="petal" cx="0" cy="-20" rx="11" ry="18" fill="url(#petalShine)"/></g>
+<g transform="rotate(112)"><ellipse class="petal" cx="0" cy="-20" rx="11" ry="18" fill="url(#petalShine)"/></g>
+<g transform="rotate(184)"><ellipse class="petal" cx="0" cy="-20" rx="11" ry="18" fill="url(#petalShine)"/></g>
+<g transform="rotate(256)"><ellipse class="petal" cx="0" cy="-20" rx="11" ry="18" fill="url(#petalShine)"/></g>
+<g transform="rotate(328)"><ellipse class="petal" cx="0" cy="-20" rx="11" ry="18" fill="url(#petalShine)"/></g>
+<circle class="center-dot" r="10" fill="#c9862a"/>
+</g>
+</g>
+
+<g transform="translate(340,300)">
+<g class="flower f7">
+<g transform="rotate(15)"><ellipse class="petal" cx="0" cy="-26" rx="14" ry="24" fill="url(#petalShine)"/></g>
+<g transform="rotate(87)"><ellipse class="petal" cx="0" cy="-26" rx="14" ry="24" fill="url(#petalShine)"/></g>
+<g transform="rotate(159)"><ellipse class="petal" cx="0" cy="-26" rx="14" ry="24" fill="url(#petalShine)"/></g>
+<g transform="rotate(231)"><ellipse class="petal" cx="0" cy="-26" rx="14" ry="24" fill="url(#petalShine)"/></g>
+<g transform="rotate(303)"><ellipse class="petal" cx="0" cy="-26" rx="14" ry="24" fill="url(#petalShine)"/></g>
+<circle class="center-dot" r="13" fill="#c9862a"/>
+</g>
+</g>
+</g>
+</svg>
+
+<div class="label">Para Antonella 💛</div>
+</div>
+</body>
+</html>
